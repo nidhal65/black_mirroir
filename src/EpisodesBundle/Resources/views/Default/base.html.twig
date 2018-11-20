@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+            <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+            <title>{% block title %}{% endblock %} - Black Mirroir</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content">{% block content %}{% endblock %}</div>
+    </body>
+</html>

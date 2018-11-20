@@ -1,1 +1,74 @@
-{{ resources.name }}
+{% extends "EpisodesBundle:default:base.html.twig" %}
+
+{% block title %}Index{{ parent() }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('bundles/episodes/css/style.css') }}" />
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="col-md-8 col-md-offset-2 cover">
+        <div class="col-md-4">
+            <img src="{{ resources.image.medium }}" />
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h2>{{ resources.name }}</h2>
+                {% for genre in resources.genres %}
+                    <span class="label label-border">{{ genre }}</span>
+                {% endfor %}
+            </div>
+            <div class="space">
+                <span class="label label-border status">{{ resources.status }}</span>
+            </div>
+        </div>
+    </div>
+    <div id="description-box" class="col-md-8 col-md-offset-2 panel panel-default description-box">
+        <div class="panel-heading">
+            Description
+        </div>
+        <div class="panel-body">
+            {{ resources.summary | raw }}
+        </div>
+    </div><!-- /.modal-content -->
+    <div id="tabs" class="nav-tabs-custom col-md-offset-2 col-md-8">
+        <ul class="nav nav-tabs">
+            {% set last_episode = resources._embedded.episodes|last %}
+            {% for i in 1..last_episode.season %}
+                {% if loop.first %}
+                    <li class="active"><a href="#tab_{{ i }}" data-toggle="tab">Saison {{ i }}</a></li>
+                {% else %}
+                    <li><a href="#tab_{{ i }}" data-toggle="tab">Saison {{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="tab-content panel panel-default">
+            {% for i in 1..last_episode.season %}
+                {% if loop.first %}
+                    <div class="tab-pane active panel-body" id="tab_{{ i }}">
+                        <ul>
+                        {% for episode in resources._embedded.episodes %}
+                            {% if episode.season == i %}
+                                <li><a href="{{ url('episode', { 'id': episode.id }) }}">{{ episode.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="tab-pane panel-body" id="tab_{{ i }}">
+                        <ul>
+                            {% for episode in resources._embedded.episodes %}
+                                {% if episode.season == i %}
+                                    <li><a href="{{ url('episode', { 'id': episode.id }) }}">{{ episode.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

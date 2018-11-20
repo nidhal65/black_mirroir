@@ -42,6 +42,11 @@
       <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
       <path value="$PROJECT_DIR$/vendor/mashape/unirest-php" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/assetic-bundle" />
+      <path value="$PROJECT_DIR$/vendor/kriswallsmith/assetic" />
+      <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/oyejorge/less.php" />
+      <path value="$PROJECT_DIR$/vendor/components/jquery" />
     </include_path>
   </component>
 </project>

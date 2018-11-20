@@ -1,0 +1,27 @@
+{% extends "EpisodesBundle:default:base.html.twig" %}
+
+{% block title %}{{ episode.name }}{{ parent() }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('bundles/episodes/css/style.css') }}" />
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="col-md-4 col-md-offset-3">
+        <h1><a href="{{ url('index') }}">Black mirroir</a></h1>
+    </div>
+    <div class="col-md-12 cover">
+        <div class="col-sm-4">
+            <img width="100%" src="{{ episode.image.original }}">
+        </div>
+        <div class="col-md-8">
+            <h3>{{ episode.name }}</h3>
+            {{ episode.summary|raw }}
+            <label>Date de diffusion :</label> {{ episode.airdate }}
+            <p><a href="{{ episode.url }}" >Lien de episode</a></p>
+        </div>
+    </div>
+{% endblock content %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

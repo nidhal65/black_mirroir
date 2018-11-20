@@ -1,0 +1,24 @@
+#content {
+    background: #f7ecb5;
+}
+.label-border {
+    border: solid;
+    border-width: 2px;
+}
+.status {
+    background-color: green;
+}
+.space {
+    margin: 1% 0;
+    padding: 1% 0;
+}
+
+.description-box {
+    margin-top: 2%;
+    padding: 0px !important;
+}
+
+.cover {
+    background-color: rgba(140, 120, 102, 0.5);
+    padding: 2% 0%;
+}
